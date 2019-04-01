@@ -21,7 +21,16 @@
     <%= form.text_field :lastname %>
   </div>
 
-  
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, placeholder: "Leave blank if unchanged" %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

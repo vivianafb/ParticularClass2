@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
-  
   # GET /users
   # GET /users.json
   def index
@@ -11,6 +10,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @joined_on = @user.created_at.to_formatted_s(:short)
+    if @user.current_sign_in_at
+      @last_login = @user.current_sign_in_at.to_formatted_s(:short)
+    else
+      @last_login = "never"
+    end
   end
 
   # GET /users/new
@@ -41,6 +46,17 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+  
+    successfully_updated = if needs_password?(@user, user_params)
+                             @user.update(user_params)
+                           else
+                             @user.update_without_password(user_params)
+                           end
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -64,12 +80,16 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def needs_password?(user, params)
+      params[:password].present?
+    end
+
     def set_user
       @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :lastname)
+      params.require(:user).permit(:name, :lastname, :email, :password, :password_confirmation, :role_id, :user_id)
     end
 end

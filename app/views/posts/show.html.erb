@@ -1,17 +1,22 @@
 <p>
-  <strong>Subject:</strong>
+  <strong>Asignatura:</strong>
   <%= @post.subject %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Ciudad:</strong>
   <%= @post.city %>
 </p>
 
 <p>
-  <strong>City:</strong>
-  <%= @post.user.name %>
+  <strong>Descripción:</strong>
+  <%= @post.description %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<p>
+  <strong>Publicado por:</strong>
+  <%= @post.users_id %>
+</p>
+
+<%= link_to 'Editar', edit_post_path(@post) %> |
+<%= link_to 'Atrás', posts_path %>

@@ -7,16 +7,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-ciphE0NCAlD2/N6NUApXAN2dAs/vcSAOTzyE202jJx3oS8n4tAQezRgnlHqcJ59C" crossorigin="anonymous">  </head>
 
   <body>
+  <%= render 'layouts/navbar'%>
       <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>. Not you?
-        <%= link_to "Edit profile", edit_user_registration_path %>
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        Bienvenido! <%= current_user.email %>. No eres tú?
+        <%= link_to "Editar perfil", edit_user_registration_path %>
+        <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
       <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> or
-        <%= link_to "sign in", new_user_session_path %>
+        <%= link_to "Registrarse", new_user_registration_path %> or
+        <%= link_to "Ingresar", new_user_session_path %>
       <% end %>
 
       <% flash.each do |name, msg| %>
