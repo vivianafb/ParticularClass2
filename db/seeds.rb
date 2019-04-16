@@ -19,3 +19,5 @@ i1 = Post.create({subject: 'Ingles', city: 'Santiago'})
 i2 = Post.create({subject: 'Matemática', city: 'Santiago'})
 i3 = Post.create({subject: 'Lenguaje', city: 'Rancagua'})
 i4 = Post.create({subject: 'Historia', city: 'Viña del mar'})
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

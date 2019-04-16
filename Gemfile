@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'sqlite3', '~> 1.3.6'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'activeadmin'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
