@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :posts
   validates_presence_of :name
 
+  def username
+    return self.email.split('@')[0].capitalize
+  end
+  
   def self.available_roles
     Role.where.not(name:"Admin").all
   end

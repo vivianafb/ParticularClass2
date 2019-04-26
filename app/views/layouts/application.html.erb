@@ -7,21 +7,21 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
-  #  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  #   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.0.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-      
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
   <body>
   <%= render 'layouts/navbar'%>
       <% if user_signed_in? %>
         Bienvenido! <%= current_user.email %>. No eres tú?
-        <%= link_to "Editar perfil", edit_user_registration_path %>
-        <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+        <%= link_to 'Editar Perfil', edit_user_registration_path %>
+        <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
       <% else %>
         <%= link_to "Registrarse", new_user_registration_path %> or
         <%= link_to "Ingresar", new_user_session_path %>

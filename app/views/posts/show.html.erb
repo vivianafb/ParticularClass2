@@ -15,7 +15,7 @@
 
 <p>
   <strong>Publicado por:</strong>
-  <%= @post.users_id %>
+  <%= @post.user.username %>
 </p>
 
 <%= link_to 'Editar', edit_post_path(@post) %> |
