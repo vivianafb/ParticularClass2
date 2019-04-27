@@ -17,24 +17,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
   <body>
-  <%= render 'layouts/navbar'%>
-      <% if user_signed_in? %>
-        Bienvenido! <%= current_user.email %>. No eres tú?
-        <%= link_to 'Editar Perfil', edit_user_registration_path %>
-        <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
-      <% else %>
-        <%= link_to "Registrarse", new_user_registration_path %> or
-        <%= link_to "Ingresar", new_user_session_path %>
-      <% end %>
-
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-  
-    <%= yield %>
-  </body>
-
-<script>
+  <script>
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '{your-app-id}',
@@ -78,6 +61,24 @@ function checkLoginState() {
     statusChangeCallback(response);
   });
 }
+  <%= render 'layouts/navbar'%>
+      <% if user_signed_in? %>
+        Bienvenido! <%= current_user.email %>. No eres tú?
+        <%= link_to 'Editar Perfil', edit_user_registration_path %>
+        <%= link_to 'Salir', destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Registrarse", new_user_registration_path %> or
+        <%= link_to "Ingresar", new_user_session_path %>
+      <% end %>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+  
+    <%= yield %>
+  </body>
+
+
 
 
 </html>
